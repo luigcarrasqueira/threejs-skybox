@@ -15,6 +15,8 @@ function init() {
 
     document.body.appendChild(renderer.domElement);
 
+    window.addEventListener("resize", () => updateAspectRatio());
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener("change", renderer);
     controls.minDistance = 500;
@@ -63,6 +65,16 @@ function createMaterial(name) {
 
 function changeMaterial(name) {
     skyBox.material = createMaterial(name);
+}
+
+function updateAspectRatio() {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let aspectRatio = width/height;
+
+    renderer.setSize(width, height);
+    camera.aspect = aspectRatio;
+    camera.updateProjectionMatrix();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
