@@ -82,5 +82,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelector("#skybox").addEventListener("change", function() {
         changeMaterial(this.value);
-    })
+    });
 });
